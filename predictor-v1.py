@@ -79,6 +79,7 @@ def execute_model(X, Y, model_,encoding ,debug):
     logToTrace('regression_model_mse = ' + str(regression_model_mse))
     print('math.sqrt(regression_model_mse) = ',math.sqrt(regression_model_mse))
     logToTrace('math.sqrt(regression_model_mse) = ' + str(math.sqrt(regression_model_mse)))
+
 #==============================================================================================================
 
 def execute_model_to_predict_fare(user_input,X, Y, model,debug):
@@ -105,11 +106,15 @@ def execute_model_to_predict_fare(user_input,X, Y, model,debug):
     y_predicted = model.predict(x_input.reshape(1,-1))
     print()
     print('Predicted flight fare is ', y_predicted.item(0))
+    logToTrace('\n')
+    logToTrace('Predicted flight fare is ' + str(y_predicted.item(0)))
 
     score = model.score(X, Y)
     #print(accuracy_score(Y, predicted))
     print()
     print('score = ', score)
+    logToTrace('\n')
+    logToTrace('score = ' + str(score))
 
     
 
@@ -118,8 +123,11 @@ def execute_model_to_predict_fare(user_input,X, Y, model,debug):
 def prepare_model(model, dataset, debug):
 
     print('dataset is ', dataset)
+    logToTrace('dataset is ' + dataset)
     print()
+    logToTrace('\n')
     print('Model is ', get_model(model))
+    logToTrace('Model is ' + str(get_model(model)))
 
     features = ['origin', 'destination','distance', 'quarter','year', 'origin_population', 'destination_population' ,'passengers', 'flights' ,'seats', 'oil_price','flight_fare']
     features2 = ['origin', 'destination','distance', 'quarter', 'origin_population', 'destination_population' ,'passengers', 'flights' ,'seats', 'oil_price','origin_cat','destination_cat']
@@ -132,9 +140,13 @@ def prepare_model(model, dataset, debug):
     #df_ = pd.DataFrame(mydata)
 
     print()
+    logToTrace('\n')
     print('***** Dataset Summary *****')
-    print()
+    logToTrace('\n')
+    print('***** Dataset Summary *****')
+    logToTrace('\n')
     print(df.describe())
+    logToTrace(df.describe())
 
 
     #print(df)
@@ -167,8 +179,8 @@ def prepare_model(model, dataset, debug):
 def prepare_model_with_encoding( model, encoding ,dataset, debug):
     
     print()
-    print('dataset is ', dataset)
-    logToTrace('dataset is ' + dataset)
+    print('Analyzing {} dataset '.format(dataset))
+    logToTrace('Analyzing {} dataset '.format(dataset))
     print('Model is ', get_model(model))
     logToTrace('Model is '+ str(get_model(model)))
     if(encoding == 0):
@@ -225,6 +237,7 @@ def prepare_model_with_encoding( model, encoding ,dataset, debug):
 
     print()
     print(df.describe())
+    logToTrace(str(df.describe()))
 
     X = df.drop(featuresToDropX, axis=1)
     #Y = pd.DataFrame(mydata['flight_fare'])
@@ -312,12 +325,16 @@ def prepare_model_with_origin_and_destination(origin, destination, model, datase
 def prepare_model_with_origin_and_destination_with_encoding(origin, destination, model, encoding ,dataset, debug):
 
     print()
-    print('dataset is ', dataset)
+    print('Analyzing {} dataset '.format(dataset))
+    logToTrace('Analyzing {} dataset '.format(dataset))
     print('Model is ', get_model(model))
+    logToTrace('Model is '+ str(get_model(model)))
     if(encoding == 0):
         print('Encoding is Label Encoding')
+        logToTrace('Encoding is Label Encoding')
     else:
         print('Encoding is One-Hot Encoding')
+        logToTrace('Encoding is One-Hot Encoding')
 
         #features = ['origin', 'destination', 'oil_price', 'quarter', 'year', 'flight_fare']
 
@@ -375,12 +392,17 @@ def prepare_model_with_origin_and_destination_with_encoding(origin, destination,
     
     print()
     print('{} records found for rout {} -> {}'.format(len(df), origin, destination))
-    
+    logToTrace('{} records found for rout {} -> {}'.format(len(df), origin, destination))
 
     print()
     print('***** Dataset Summary *****')
+    logToTrace('\n')
+    logToTrace('***** Dataset Summary *****')
+    logToTrace('\n')
+
     print()
     print(df.describe())
+    logToTrace(str(df.describe()))
 
     X = df.drop(featuresToDropX, axis=1)
     #Y = pd.DataFrame(mydata['flight_fare'])
@@ -565,12 +587,16 @@ def predict_fare2(origin, destination, oil_price, model, quarter, year, dataset,
 #==============================================================================================================
 def predict_fare3(origin, destination, oil_price, model,quarter, year,dataset, debug):
 
-    enc = LabelBinarizer()
     print()
+    logToTrace('\n')
     print('origin is ' , origin)
+    logToTrace('origin is ' + origin)
     print('destination is ', destination)
+    logToTrace('destination is '+ destination)
     print('dataset is ', dataset)
+    logToTrace('dataset is '+ dataset)
     print('Model is ', get_model(model))
+    logToTrace('Model is '+ str(get_model(model)))
 
     features = ['origin', 'destination', 'oil_price', 'quarter', 'year', 'flight_fare']
     #features = ['origin', 'destination', 'oil_price', 'flight_fare']
@@ -622,11 +648,16 @@ def predict_fare3(origin, destination, oil_price, model,quarter, year,dataset, d
 
     print()
     print('***** Dataset Summary *****')
+    logToTrace('\n')
+    logToTrace('***** Dataset Summary *****')
+    logToTrace('\n')
+
     print()
     print(df.describe())
-    print()
-    print('{} records found for rout {} -> {}'.format(len(df), origin, destination))
+    logToTrace(str(df.describe()))
     
+    logToTrace('\n')
+    logToTrace('{} records found for rout {} -> {}'.format(len(df), origin, destination))
 
     X = df.drop([target], axis=1)
     user_input = user_input.drop([target], axis=1)
@@ -722,16 +753,6 @@ if __name__ == "__main__":
         predict_fare3(origin.upper(), destination.upper(), oil_price, model, quarter, year, args.dataset, args.debug)
 
 """
-
-    parser.add_argument('--origin', type=str,
-                            help="Code for Origin Aiport ex: JFK", 
-                            default="JFK",
-                            required=False)
-    parser.add_argument("--destination", type=str, 
-                            help="Code for Origin Aiport ex: AID",
-                            default="AID", 
-                            required=False)
-
 
                             abq -> bwi
                             ATL -> MDW -> 51%
