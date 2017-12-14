@@ -1,0 +1,61 @@
+
+Analyzing DS1.CSV dataset 
+Model is LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+Encoding is Label Encoding
+56 records found for rout BDL -> IAD
+
+
+***** Dataset Summary *****
+
+
+       distance        year    quarter  origin_population  \
+count      56.0    56.00000  56.000000       5.600000e+01   
+mean      326.0  2002.50000   2.500000       1.156750e+06   
+std         0.0     4.06761   1.128152       3.247707e+04   
+min       326.0  1996.00000   1.000000       1.107010e+06   
+25%       326.0  1999.00000   1.750000       1.113800e+06   
+50%       326.0  2002.50000   2.500000       1.169621e+06   
+75%       326.0  2006.00000   3.250000       1.182625e+06   
+max       326.0  2009.00000   4.000000       1.195998e+06   
+
+       destination_population   passengers      flights         seats  \
+count            5.600000e+01     56.00000    56.000000     56.000000   
+mean             9.962460e+06  25263.37500   412.803571  37476.089286   
+std              6.839591e+05  12412.48207   275.793495  18558.595137   
+min              8.857302e+06   7041.00000    89.000000  10202.000000   
+25%              9.231820e+06  14318.50000   185.000000  23659.750000   
+50%              1.010095e+07  23839.00000   373.500000  39816.500000   
+75%              1.053002e+07  33572.00000   490.750000  45546.500000   
+max              1.095248e+07  52357.00000  1346.000000  81596.000000   
+
+        oil_price  flight_fare  origin_cat  destination_cat  
+count   56.000000    56.000000        56.0             56.0  
+mean    40.427562   165.114997         9.0             33.0  
+std     26.136246    61.658146         0.0              0.0  
+min     11.212188    87.373261         9.0             33.0  
+25%     21.052908   115.557698         9.0             33.0  
+50%     28.916151   158.958447         9.0             33.0  
+75%     58.098155   194.920174         9.0             33.0  
+max    121.204375   328.475044         9.0             33.0  
+
+
+The coefficient for distance is 0.0
+The coefficient for year is 1.0000000000126317
+The coefficient for quarter is -1.8967425807596492e-13
+The coefficient for origin_population is -1.0736268913030022e-15
+The coefficient for destination_population is -7.300234934804834e-18
+The coefficient for passengers is -1.0270795846280665e-16
+The coefficient for flights is 5.072085430393075e-15
+The coefficient for seats is -1.453801748218924e-17
+The coefficient for oil_price is -2.342703658699776e-14
+The coefficient for origin_cat is 0.0
+The coefficient for destination_cat is 0.0
+The intercept for our model is -2.3978827812243253e-08
+
+
+score = 0.598299320162
+
+
+***** The Mean Squared Error *****
+regression_model_mse = 675.427989047
+math.sqrt(regression_model_mse) = 25.988997461366417

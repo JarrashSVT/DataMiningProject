@@ -5,8 +5,8 @@
 Flight Fare Predictor
 =========================================================
 
-1- Analize the dataset
-2- Analyze the dataset for specific origin and destination
+1- Analyze dataset
+2- Analyze dataset for specific origin and destination
 3- Predict a Flight Fare
 
 
@@ -45,7 +45,7 @@ def execute_model(X, Y, model_,encoding ,debug):
 
     # train the model
     model.fit(x_train, y_train)
-
+    logToTrace('\n')
     if(encoding == 0):
         print()
         for idx, col_name in enumerate(x_train.columns):
@@ -521,17 +521,6 @@ def predict_fare2(origin, destination, oil_price, model, quarter, year, dataset,
     df_origin = df['origin']
     arr_origin = np.array(df_origin)
    
-    #print(df)
-    ## encoding categorical values using label encoding
-    #df['origin'] = df['origin'].astype('category')
-    #df['destination'] = df['destination'].astype('category')
-    #print(df.dtypes)
-
-    ## assign the encoded variable to a new column using the cat.codes accessor:
-    #df['origin_cat'] = df['origin'].cat.codes
-    #df['destination_cat'] = df['destination'].cat.codes
-    #print(df.head())
-    #print(df['destination'])
 
     df = df.loc[df['origin'] == origin]
   
@@ -597,6 +586,13 @@ def predict_fare3(origin, destination, oil_price, model,quarter, year,dataset, d
     logToTrace('dataset is '+ dataset)
     print('Model is ', get_model(model))
     logToTrace('Model is '+ str(get_model(model)))
+
+    if(encoding == 0):
+        print('Encoding is Label Encoding')
+        logToTrace('Encoding is Label Encoding')
+    else:
+        print('Encoding is One-Hot Encoding')
+        logToTrace('Encoding is One-Hot Encoding')
 
     features = ['origin', 'destination', 'oil_price', 'quarter', 'year', 'flight_fare']
     #features = ['origin', 'destination', 'oil_price', 'flight_fare']
@@ -742,7 +738,7 @@ if __name__ == "__main__":
         #predict_fare(origin.upper(), destination.upper(), oil_price, model, args.dataset, args.debug)
         predict_fare3(origin.upper(), destination.upper(), oil_price, model, quarter, year, args.dataset, args.debug)
 
-        #predict_fare(origin.upper(), destination.upper(), oil_price, quarter, year, model, args.dataset, args.debug)
+        #predict_fare2(origin.upper(), destination.upper(), oil_price, quarter, year, model, args.dataset, args.debug)
 
     elif(choice == 99): # option 99 is for testing :)
         origin = 'ABQ'##input('Enter the origin airport code: ')

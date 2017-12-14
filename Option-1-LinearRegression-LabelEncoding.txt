@@ -1,0 +1,60 @@
+
+Analyzing DS1.CSV dataset 
+Model is LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+Encoding is Label Encoding
+
+
+***** Dataset Summary *****
+
+
+           distance          year       quarter  origin_population  \
+count  51913.000000  51913.000000  51913.000000       5.191300e+04   
+mean     952.325044   2002.781192      2.510893       8.320911e+06   
+std      616.290357      4.007750      1.117483       9.041009e+06   
+min       76.000000   1996.000000      1.000000       1.416990e+05   
+25%      468.000000   1999.000000      2.000000       1.515571e+06   
+50%      817.000000   2003.000000      3.000000       4.802300e+06   
+75%     1222.000000   2006.000000      4.000000       1.199882e+07   
+max     2724.000000   2009.000000      4.000000       3.813959e+07   
+
+       destination_population     passengers       flights          seats  \
+count            5.191300e+04   51913.000000  51913.000000   51913.000000   
+mean             7.856097e+06   44142.395989    517.087878   62552.824187   
+std              9.498378e+06   51324.164543    536.893294   72103.744025   
+min              1.150190e+05       0.000000      0.000000       0.000000   
+25%              1.737170e+06    9978.000000    162.000000   13721.000000   
+50%              3.496957e+06   26765.000000    358.000000   37978.000000   
+75%              1.039238e+07   61036.000000    717.000000   87225.000000   
+max              3.813959e+07  503756.000000   5084.000000  721281.000000   
+
+          oil_price   flight_fare    origin_cat  destination_cat  
+count  51913.000000  51913.000000  51913.000000     51913.000000  
+mean      42.060671    184.902570     51.374338        50.533739  
+std       26.335070     69.752607     28.286253        28.834361  
+min       11.212188     51.980000      0.000000         0.000000  
+25%       21.218500    132.945116     29.000000        24.000000  
+50%       29.917937    175.284233     55.000000        49.000000  
+75%       59.547619    225.935652     73.000000        75.000000  
+max      121.204375    682.075000    112.000000       102.000000  
+
+
+The coefficient for distance is 1.4451739866371205e-13
+The coefficient for year is 1.0000000000013782
+The coefficient for quarter is 5.115544710571855e-13
+The coefficient for origin_population is 1.9101204498186542e-16
+The coefficient for destination_population is -1.466575407116351e-17
+The coefficient for passengers is 2.043738625401243e-16
+The coefficient for flights is 3.2103511490645506e-15
+The coefficient for seats is 2.332782428057066e-17
+The coefficient for oil_price is -5.003691573787362e-15
+The coefficient for origin_cat is -6.38987556263125e-16
+The coefficient for destination_cat is 7.786444546755693e-16
+The intercept for our model is -4.38490133092273e-09
+
+
+score = 0.33774393499
+
+
+***** The Mean Squared Error *****
+regression_model_mse = 1622.8297606
+math.sqrt(regression_model_mse) = 40.284361241052736
