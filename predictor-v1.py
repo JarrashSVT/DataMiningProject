@@ -748,12 +748,4 @@ if __name__ == "__main__":
         quarter = 3 # int(input('Enter the quarter: '))
         predict_fare3(origin.upper(), destination.upper(), oil_price, model, quarter, year, args.dataset, args.debug)
 
-"""
-
-                            abq -> bwi
-                            ATL -> MDW -> 51%
-                            ATL -> ORD -> 28.5%
-
-
-"""
 
